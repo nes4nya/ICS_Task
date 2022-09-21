@@ -117,49 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Surname.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Position.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="YearOfBirth.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Salary.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAK
-        AwAAAk1TRnQBSQFMAwEBAAGgAQABoAEAARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
-        ARADAAEBAQABIAYAARAmAAMGAQgDKwFBAzoBYgM6AWEDKwFBAwYBCOAAAwkBCwNEAXsDRwGHAy4BSAMZ
-        ASMDGQEiAy4ERwGGA0QBewMJAQvUAAMWAR4DSwGZAxYBHhgAAxYBHgNLAZkDFQEdzAADCQEMA0sBmQMG
-        AQggAAMGAQgDSwGYAwkBDMgAA0UBfQMVAR0IAAMtAUYDQAFwA0ABcANAAXADQAFwAy0BRAgAAxUBHQNF
-        AX3EAAMIAQoDRwGFDAADHwHwAwAB/wMAAf8DAAH/AwAB/wMiAe4MAANHAYYDCAEKwAADLQFFAy0BRQwA
-        A0wBvQMAAf8DAAH/AwAB/wMAAf8DTAG9DAADLQFGAy0BRcAAAzwBZgMYASAMAAMYASEDSQHCAysB6AMu
-        AecDSQHBAxgBIQwAAxgBIAM8AWbAAAM9AWcDGAEgEAADBgEHA0UBfQNFAX0DBgEHEAADGAEgAzwBZsAA
-        Ay0BRAMtAUYQAANAAXEDAAH/AwAB/wNBAXMQAAMtAUUDLQFFwAADCAEKA0cBhhAAAzsBZAMAAf8DAAH/
-        AzsBZBAAA0cBhQMIAQrEAANFAX0DFQEcDAAEAQM2AVkDNgFYBAEMAAMVARwDRQF9yAADCQEMA0sBmAMG
-        AQggAAMGAQgDTAGaAwkBDMwAAxYBHgNLAZgDFQEdGAADFQEdA0wBmgMXAR/UAAMJAQsDRAF7A0cBhgMu
-        AUgDGQEiAxkBIgMuBEcBhQNEAXsDCQEL4AADBgEIAyoBQAM7AWQDOgFiAyoBQAMGAQjUAAFCAU0BPgcA
-        AT4DAAEoAwABQAMAARADAAEBAQABAQUAAYAXAAP/AQAB+AEfBgAB4AEHBgABxwHjBgABjwHxBgABmAEZ
-        BgABOAEcBgABOAEcBgABOAEcBgACPAYAAjwGAAI8BgABnAE5BgABjwHxBgABxwHjBgAB4AEHBgAB+AEf
-        BgAL
-</value>
-  </data>
 </root>

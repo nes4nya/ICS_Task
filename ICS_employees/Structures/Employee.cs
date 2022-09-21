@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICS_employees.Structures
 {
-    public class Employee
+    public class Employee: IInfoPosition
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -14,10 +14,9 @@ namespace ICS_employees.Structures
         public string Surname { get; set; }
 
         public DateTime Birthday { get; set; }
+        public string Position { get ; set; }
+        public int Salary { get; set ; }
 
-        public string Position { get; set; }
-
-        public int Salary { get; set; }
         public Employee(int id, string name, string surname, DateTime birthday, string position, int salary)
         {
             Id = id;

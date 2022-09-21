@@ -73,16 +73,6 @@ namespace ICS_employees.Forms
             sqlConnection.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddButton_Click(object sender, EventArgs e)
         {
             employeeAdded = true;
@@ -159,11 +149,6 @@ namespace ICS_employees.Forms
 
 
         }
-        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             deleteRow();
@@ -197,6 +182,14 @@ namespace ICS_employees.Forms
             {
                 dataGridView.Rows.Clear();
                 RefreshDatagrid(dataGridView);
+            }
+        }
+
+        private void ReportButton_Click(object sender, EventArgs e)
+        {
+            using(frmPrint frm = new frmPrint(employees))
+            {
+                frm.ShowDialog();
             }
         }
     }
