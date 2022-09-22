@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,11 +26,12 @@ namespace ICS_employees.Forms
         }
 
         private void frpPrint_Load(object sender, EventArgs e)
-        {            
+        {
             reportViewer.LocalReport.DataSources.Clear();
             sbPositions = GetsbPositions(employees);
             ReportDataSource source = new ReportDataSource("DataSetByPosition", sbPositions);
-            reportViewer.LocalReport.ReportPath = @"C:\Users\user\Documents\ICS\ICS_employees\ICS_employees\Report\PositionReport.rdlc";
+            string reportPath = GetPathToReport();
+            reportViewer.LocalReport.ReportPath = reportPath + @"PositionReport.rdlc";
             reportViewer.LocalReport.DataSources.Add(source);
             reportViewer.RefreshReport();
         }
@@ -48,6 +51,14 @@ namespace ICS_employees.Forms
             }
 
             return sbPos;
+        }
+        private string GetPathToReport()
+        {
+            var appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            int indexOfChar = appDir.IndexOf("\\bin");
+            appDir = appDir.Remove(indexOfChar, appDir.Length - indexOfChar);
+
+            return appDir + @"\Report\";
         }
     }
 }

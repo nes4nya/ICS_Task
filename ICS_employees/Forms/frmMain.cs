@@ -8,20 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using ICS_employees.Validation;
 using ICS_employees.Structures;
+using ICS_employees.Repository;
 
 namespace ICS_employees.Forms
 {
     public partial class frmMain : Form
     {
-        private SqlConnection sqlConnection = null;
-
-        private SqlDataAdapter sqlDataAdapter = null;
-
-        private DataTable table = new DataTable();
+        private SQLEmployeeRepository sqlEmpRepository = new SQLEmployeeRepository();
 
         private List<Employee> employees = new List<Employee>();
 
@@ -36,21 +32,10 @@ namespace ICS_employees.Forms
             dgw.Rows.Add(new object[] {emp.Id, imageList1.Images[0], emp.Name, emp.Surname, emp.Position, emp.Birthday.ToShortDateString(), emp.Salary});
         }
 
-        private DataTable GetTableOnRequest(string request)
-        {
-            sqlDataAdapter = new SqlDataAdapter(request, sqlConnection);
-
-            table = new DataTable();
-
-            sqlDataAdapter.Fill(table);
-
-            return table;
-
-        }
         private void LoadDatagrid(DataGridView dgw)
         {
-            table = GetTableOnRequest("SELECT * FROM Employees");
-
+            DataTable table = sqlEmpRepository.GetDataTable("SELECT * FROM Employees");
+               
             foreach (DataRow row in table.Rows)
             {
                 var employee = new Employee((Convert.ToInt32(row["ID"])), row["Name"].ToString(), row["Surname"].ToString(), Convert.ToDateTime(row["Birthday"]), row["Position"].ToString(), Convert.ToInt32(row["Salary"]));
@@ -65,12 +50,8 @@ namespace ICS_employees.Forms
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Employees_db"].ConnectionString);
-            sqlConnection.Open();
-
+            sqlEmpRepository.SetSqlConnection("Employees_db");
             LoadDatagrid(dataGridView);
-
-            sqlConnection.Close();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -78,25 +59,16 @@ namespace ICS_employees.Forms
             employeeAdded = true;
             try
             {
-                sqlConnection.Open();
-                SqlCommand command = new SqlCommand(
-                    "INSERT INTO [Employees] (Name, Surname, Birthday, Position, Salary) VALUES (@Name, @Surname, @Birthday, @Position, @Salary)",
-                    sqlConnection);
-
                 var dateError = Validator.DateValidation(Birthday_txtBox.Text);
                 var salaryError = Validator.SalaryValidation(Salary_txtBox.Text);
 
                 if (salaryError == null && dateError == null)
                 {
-                    command.Parameters.AddWithValue("Name", Name_txtBox.Text);
-                    command.Parameters.AddWithValue("Surname", Surname_txtBox.Text);
-                    command.Parameters.AddWithValue("Birthday", Convert.ToDateTime(Birthday_txtBox.Text));
-                    command.Parameters.AddWithValue("Position", Position_txtBox.Text);
-                    command.Parameters.AddWithValue("Salary", Convert.ToInt32(Salary_txtBox.Text));
+                    Employee emp = new Employee(0, Name_txtBox.Text, Surname_txtBox.Text, Convert.ToDateTime(Birthday_txtBox.Text), Position_txtBox.Text, Convert.ToInt32(Salary_txtBox.Text));
 
-                    command.ExecuteNonQuery();
+                    sqlEmpRepository.AddEmployee("INSERT INTO [Employees] (Name, Surname, Birthday, Position, Salary) VALUES (@Name, @Surname, @Birthday, @Position, @Salary)", emp);
 
-                    table = GetTableOnRequest("SELECT TOP 1 * FROM Employees ORDER BY ID DESC");
+                    DataTable table = sqlEmpRepository.GetDataTable("SELECT TOP 1 * FROM Employees ORDER BY ID DESC");
 
                     foreach (DataRow row in table.Rows)
                     {
@@ -127,7 +99,6 @@ namespace ICS_employees.Forms
             finally
             {
                 employeeAdded = false;
-                sqlConnection.Close();
             }
         }
 
@@ -137,17 +108,10 @@ namespace ICS_employees.Forms
             int index = dataGridView.CurrentCell.RowIndex;
             int id = Convert.ToInt32(dataGridView.Rows[index].Cells["ID"].Value);
 
-            sqlConnection.Open();
-
-            var command = new SqlCommand("DELETE FROM Employees WHERE ID = @id", sqlConnection);
-            command.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-            command.ExecuteNonQuery();
-
-            sqlConnection.Close();  
+            sqlEmpRepository.Delete(id);
+            employees.RemoveAll(x => x.Id == id);
 
             dataGridView.Rows.RemoveAt(index);
-
-
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {

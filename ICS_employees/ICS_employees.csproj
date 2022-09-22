@@ -189,13 +189,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChildControls.cs" />
+    <Compile Include="StaticClass\ChildControls.cs" />
     <Compile Include="Forms\frmPrint.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmPrint.Designer.cs">
       <DependentUpon>frmPrint.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\SQLEmployeeRepository.cs" />
     <Compile Include="Structures\Employee.cs" />
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
